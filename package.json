@@ -1,0 +1,50 @@
+{
+  "name": "smart-expense-tracker",
+  "version": "1.0.0",
+  "description": "A modern, full-stack expense tracking application built with the MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "setup": "chmod +x setup.sh && ./setup.sh",
+    "install-all": "npm run install-backend && npm run install-frontend",
+    "install-backend": "cd server && npm install",
+    "install-frontend": "cd client && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd server && npm run dev",
+    "dev:frontend": "cd client && npm run dev",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd server && npm test",
+    "test:frontend": "cd client && npm test",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "cd server && npm run lint",
+    "lint:frontend": "cd client && npm run lint"
+  },
+  "keywords": [
+    "expense-tracker",
+    "mern-stack",
+    "react",
+    "nodejs",
+    "mongodb",
+    "express",
+    "tailwindcss"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/smart-expense-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/smart-expense-tracker/issues"
+  },
+  "homepage": "https://github.com/yourusername/smart-expense-tracker#readme"
+}

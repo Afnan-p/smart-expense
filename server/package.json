@@ -1,0 +1,24 @@
+{
+  "name": "smart-expense-tracker-server",
+  "version": "1.0.0",
+  "description": "Backend for Smart Expense Tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node utils/sampleData.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["expense", "tracker", "mern", "nodejs", "express"],
+  "author": "Your Name",
+  "license": "MIT"
+}

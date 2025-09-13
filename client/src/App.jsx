@@ -208,13 +208,13 @@ function App() {
               >
                 <Home size={20} />
               </button>
-              <button
+              {/* <button
                 onClick={() => setShowForm(true)}
                 className="btn-primary flex items-center gap-2"
               >
                 <Plus size={16} />
                 Add Transaction
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

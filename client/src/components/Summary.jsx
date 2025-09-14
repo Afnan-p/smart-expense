@@ -108,42 +108,46 @@ const Summary = ({ summary = {}, categoryBreakdown = [], isLoading = false }) =>
 
       {/* Category Breakdown */}
       {categoryBreakdown.length > 0 && (
-        <div className="card">
-          <div className="flex items-center gap-2 mb-6">
-            <PieChart size={20} className="text-primary-600" />
-            <h3 className="text-lg font-semibold text-gray-900">Category Breakdown</h3>
-          </div>
-          
-          <div className="space-y-4">
-            {categoryBreakdown.map((category) => {
-              const percentage = calculatePercentage(category.total, expenses);
-              return (
-                <div key={category._id} className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-primary-500"></div>
-                    <span className="font-medium text-gray-700">{category._id}</span>
-                    <span className="text-sm text-gray-500">({category.count} transactions)</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
-                      <div className="font-semibold text-gray-900">
-                        {formatCurrency(category.total)}
-                      </div>
-                      <div className="text-sm text-gray-500">{percentage}%</div>
-                    </div>
-                    <div className="w-24 bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="bg-primary-600 h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${percentage}%` }}
-                      ></div>
-                    </div>
-                  </div>
+  <div className="card">
+    <div className="flex items-center gap-2 mb-6">
+      <PieChart size={20} className="text-primary-600" />
+      <h3 className="text-lg font-semibold text-gray-900">Category Breakdown</h3>
+    </div>
+    
+    <div className="space-y-4">
+      {categoryBreakdown.map((category) => {
+        const percentage = calculatePercentage(category.total, expenses);
+        const safePercentage = Math.min(percentage, 100); // Cap at 100%
+
+        return (
+          <div key={category._id} className="flex items-center justify-between flex-wrap">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full bg-primary-500"></div>
+              <span className="font-medium text-gray-700">{category._id}</span>
+              <span className="text-sm text-gray-500">({category.count} transactions)</span>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <div className="font-semibold text-gray-900">
+                  {formatCurrency(category.total)}
                 </div>
-              );
-            })}
+                <div className="text-sm text-gray-500">{percentage}%</div>
+              </div>
+              
+              <div className="w-24 bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div 
+                  className="bg-primary-600 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${safePercentage}%` }}
+                ></div>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })}
+    </div>
+  </div>
+)}
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
